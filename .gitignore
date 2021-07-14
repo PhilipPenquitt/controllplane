@@ -1,0 +1,6 @@
+# gitignore für python venv
+lib/
+bin/
+include/
+pyvenv.cfg
+__pycache__/
