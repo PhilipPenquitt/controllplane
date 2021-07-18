@@ -1,9 +1,9 @@
 # Controllplane
 
 - [ ] Ich möchte Dateibackup nach bedarf machen können
-- [] Ich möchte Datenbankbackup nach bedarf machen können
-- [] Integration in Telegram (nicht nur informieren sondern auch steuern)
-- [] Auslösen von Sportanmeldungen
-- [] Wetter
-- [] Auflistung der Sportanmeldungen + Reminder
-- [] docker-compose setup via ansible nicht via commandozeile
+- [ ] Ich möchte Datenbankbackup nach bedarf machen können
+- [ ] Integration in Telegram (nicht nur informieren sondern auch steuern)
+- [ ] Auslösen von Sportanmeldungen
+- [ ] Wetter
+- [ ] Auflistung der Sportanmeldungen + Reminder
+- [ ] docker-compose setup via ansible nicht via commandozeile
