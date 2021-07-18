@@ -1,6 +1,6 @@
 # Controllplane
 
-- [] Ich möchte Dateibackup nach bedarf machen können
+- [ ] Ich möchte Dateibackup nach bedarf machen können
 - [] Ich möchte Datenbankbackup nach bedarf machen können
 - [] Integration in Telegram (nicht nur informieren sondern auch steuern)
 - [] Auslösen von Sportanmeldungen
