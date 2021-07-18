@@ -1,0 +1,42 @@
+---
+# tasks file for controllplane
+- name: "Update Docker Image Mariadb"
+  docker_image:
+    name: mariadb
+    tag: 10.5
+    pull: yes
+
+- name: "Update Docker Image traefik"
+  docker_image:
+    name: traefik
+    tag: v2.3
+    pull: yes
+
+- name: "Update Docker Image traefik/whoami"
+  docker_image:
+    name: traefik/whoami
+    pull: yes
+
+- name: "Update Docker Image Mariadb"
+  docker_image:
+    name: mariadb
+    tag: 10.5
+    pull: yes
+
+- name: "Update Docker Image Redis"
+  docker_image:
+    name: redis
+    tag: alpine
+    pull: yes
+
+- name: "Update Docker Image Jaegertracing all-in-one"
+  docker_image:
+    name: jaegertracing/all-in-one
+    tag: 1.22
+    pull: yes
+
+- name: "Update Docker Image MariadbBackup"
+  docker_image:
+    name: phpe/mysqlbackup
+    tag: 1.0
+    pull: yes

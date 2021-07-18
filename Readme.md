@@ -6,3 +6,4 @@
 4. Auslösen von Sportanmeldungen
 5. Wetter
 6. Auflistung der Sportanmeldungen + Reminder
+7. docker-compose setup via ansible nicht via commandozeile
