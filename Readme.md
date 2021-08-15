@@ -6,4 +6,4 @@
 - [ ] Auslösen von Sportanmeldungen
 - [ ] Wetter
 - [ ] Auflistung der Sportanmeldungen + Reminder
-- [ ] docker-compose setup via ansible nicht via commandozeile
+- [ ] docker-compose setup via ansible nicht via Kommandozeile
