@@ -4,6 +4,8 @@ from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi import Request
 from fastapi.responses import PlainTextResponse
 from pydantic import BaseModel
+from shutil import copytree
+from time import sleep
 
 app = FastAPI()
 
@@ -63,8 +65,18 @@ def header(request: Request):
 
 
 @app.get("/filebackup", response_class=PlainTextResponse)
-async def fileBackup(token: str = Depends(oauth2_scheme)):
-    return {"token": token}
+async def fileBackup():
+    try:
+      copytree("testfolder", "backup")
+    except FileExistsError as e:
+      return "Backup für heute existiert schon"
+    return "Backup erstellt"
+
+
+@app.get("/aio", response_class=PlainTextResponse)
+async def wait():
+    sleep(5)
+    return "ich habe 5 Sekunden geschlafen"
 
 
 class Item(BaseModel):
@@ -72,6 +84,7 @@ class Item(BaseModel):
     description: Optional[str] = None
     price: float
     tax: Optional[float] = None
+
 
 @app.post("/items/")
 async def create_item(item: Item):
