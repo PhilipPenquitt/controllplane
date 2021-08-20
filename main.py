@@ -7,54 +7,12 @@ from fastapi.security import OAuth2PasswordBearer
 from pydantic import BaseModel
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
-fake_users_db = {
-    "johndoe": {
-        "username": "johndoe",
-        "email": "john@doe",
-        "full_name": "John Doe",
-        "hashed_password": "fakehashedsecret",
-        "disabled": False,
-    },
-    "alice": {
-        "username": "alice",
-        "full_name": "Alice Wonderson",
-        "email": "alice@example.com",
-        "hashed_password": "fakehashedsecret2",
-        "disabled": True,
-    }
-}
-
 app = FastAPI()
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
-
-
-class User(BaseModel):
-    username: str
-    email: Optional[str] = None
-    full_name: Optional[str] = None
-    disabled: Optional[bool] = None
-
-class UserInDB(User):
-    hashed_password: str
-
-def fake_dekode_token(token):
-    return User(
-        username=token + "fakedecoded", email="johndoe@gmail.com"
-    )
-
-
-async def get_current_user(token: str = Depends(oauth2_scheme)):
-    user = fake_dekode_token(token)
-    return user
-
-
-@app.get("/users/me")
-async def read_uses_me(current_user: User = Depends(get_current_user)):
-    return get_current_user
 
 people = {
     "ise": "ise",
-    "katja": "katja"
+    "katja": "katja",
+    "annika": "annika"
 }
 
 clients = []
@@ -110,10 +68,13 @@ def header(request: Request):
 async def fileBackup(token: str = Depends(oauth2_scheme)):
     return {"token": token}
 
-@app.post("/token")
-async def login(form_data: OAuth2PasswordRequestForm = Depends()):
-    user_dict = fake_users_db.get(form_data.username)
-    if not user_dict:
-        raise HTTPException(status_code=400, detail= "Falscher Nutzername oder Passwort")
-    user = UserInDB(**user_dict)
-    
+
+class Item(BaseModel):
+    name: str
+    description: Optional[str] = None
+    price: float
+    tax: Optional[float] = None
+
+@app.post("/items/")
+async def create_item(item: Item):
+    return item
