@@ -3,9 +3,7 @@ from typing import Counter, Optional
 from fastapi import FastAPI, Depends, HTTPException, status
 from fastapi import Request
 from fastapi.responses import PlainTextResponse
-from fastapi.security import OAuth2PasswordBearer
 from pydantic import BaseModel
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
 app = FastAPI()
 
