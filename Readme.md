@@ -7,3 +7,4 @@
 - [ ] Wetter
 - [ ] Auflistung der Sportanmeldungen + Reminder
 - [ ] docker-compose setup via ansible nicht via Kommandozeile
+- [ ] Portfolio Stand aus justetf abrufen und am besten als jpeg ausgeben.
