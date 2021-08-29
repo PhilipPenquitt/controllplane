@@ -1,11 +1,12 @@
 from enum import Enum
 from typing import Counter, Optional
-from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi import FastAPI, Depends, HTTPException, requests, status
 from fastapi import Request
 from fastapi.responses import PlainTextResponse
 from pydantic import BaseModel
 from shutil import copytree
 from time import sleep
+import sys, datetime
 
 app = FastAPI()
 
@@ -65,11 +66,19 @@ def header(request: Request):
 
 
 @app.get("/filebackup", response_class=PlainTextResponse)
-async def fileBackup():
+async def fileBackup(request: Request):
+    if request.client.host != "127.0.0.2":
+        raise HTTPException(status_code=403, detail="Forbidden")
     try:
-      copytree("testfolder", "backup")
-    except FileExistsError as e:
-      return "Backup für heute existiert schon"
+        heute = datetime.datetime.now()
+        backupfolder = "datenbackup" + heute.strftime("-%d-%m")
+        copytree("testfolder", backupfolder)
+    except FileExistsError:
+        return "Backup für heute existiert schon"
+    except:
+        e = sys.exc_info()
+        print(e)
+        return "Da ist ein Fehler aufgetreten" + str(e)
     return "Backup erstellt"
 
 
